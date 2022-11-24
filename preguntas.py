@@ -42,7 +42,15 @@ def pregunta_02():
     ]
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        if columna[0] not in registros: 
+            registros[columna[0]] = 1
+        else: 
+            registros[columna[0]] += 1
+    
+    lista = sorted(registros.items(), key=lambda x: x[0])
+    return lista
 
 
 def pregunta_03():
@@ -60,7 +68,15 @@ def pregunta_03():
     ]
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        if columna[0] not in registros: 
+            registros[columna[0]] = int(columna[1])
+        else: 
+            regitros[columna[0]] += int(columna[1])
+
+    lista = sorted(registros.items(), key=lambda x: x[0])
+    return lista
 
 
 def pregunta_04():
@@ -85,7 +101,16 @@ def pregunta_04():
     ]
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        mes = columna[2].split("-")[1]
+        if mes not in registros: 
+            registros[mes] = 1
+        else: 
+            registros[mes] += 1
+
+    lista = sorted(registros.items(), key=lambda x: x[0])
+    return lista
 
 
 def pregunta_05():
@@ -103,7 +128,18 @@ def pregunta_05():
     ]
 
     """
-    return
+    registros = {}
+    lista = []
+    for columna in lista:
+        if columna[0] not in registros: 
+            registros[columna[0]] = [int(columna[1])]
+        else: 
+            registros[columna[0]] += [int(columna[1])]
+
+    orden = sorted(registros.items(), key=lambda x: x[0])
+    for literal in orden: 
+        lista.append((literal[0], max(literal[1]), min(literal[1])))
+    return lista
 
 
 def pregunta_06():
@@ -128,7 +164,21 @@ def pregunta_06():
     ]
 
     """
-    return
+    registros = {}
+    lista = []
+
+    for columna in datos:
+        for ele in columna[4].split(","):
+            val = ele.split(":")
+            if val[0] not in registros: 
+                registros[val[0]] = [int(val[1])]
+            else: 
+                registros[val[0]] += [int(val[1])]
+
+    orden = sorted(registros.items(), key=lambda x: x[0])
+    for literal in orden: 
+        lista.append((literal[0], min(literal[1]), max(literal[1])))
+    return lista
 
 
 def pregunta_07():
@@ -152,7 +202,15 @@ def pregunta_07():
     ]
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        if int(columna[1]) not in registros: 
+            registros[int(columna[1])] = [columna[0]]
+        else: 
+            registros[int(columna[1])] += [columna[0]]
+
+    orden = sorted(registros.items(), key=lambda x: x[0])
+    return orden
 
 
 def pregunta_08():
@@ -177,7 +235,18 @@ def pregunta_08():
     ]
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        if int(columnas[1]) not in registros:
+            registros[int(columna[1])] = [columna[0]]
+        else:
+            if columna[0] not in registros[int(columna[1])]: 
+                registros[int(columna[1])] += [columna[0]]
+
+    orden = sorted(registros.items(), key=lambda x: x[0])
+    for item in orden: 
+         item[1].sort()
+    return orden
 
 
 def pregunta_09():
@@ -200,7 +269,18 @@ def pregunta_09():
     }
 
     """
-    return
+    registros = {}
+
+    for columna in datos:
+        for ele in columna[4].split(","):
+            val = ele.split(":")
+            if val[0] not in registros: 
+                registros[val[0]] = 1
+            else: 
+                registros[val[0]] += 1
+
+    orden = dict(sorted(registros.items()))
+    return orden
 
 
 def pregunta_10():
@@ -221,7 +301,13 @@ def pregunta_10():
 
 
     """
-    return
+    lista = []
+    for columna in datos:
+        columna4 = columna[3].split(",")
+        columna5 = columna[4].split(",")
+        lista.append((columna[0], len(columna4), len(columna5)))
+
+    return lista
 
 
 def pregunta_11():
@@ -242,7 +328,17 @@ def pregunta_11():
 
 
     """
-    return
+    registros = {}
+
+    for columna in datos:
+        columna4 = columna[3].split(",")
+        for val in columna4:
+            if val not in registros: 
+                registros[val] = int(columna[1])
+            else: 
+                registros[val] += int(columna[1])
+
+    return dict(sorted(registros.items()))
 
 
 def pregunta_12():
@@ -260,4 +356,16 @@ def pregunta_12():
     }
 
     """
-    return
+    registros = {}
+    for columna in datos:
+        columna5 = columna[4].split(",")
+        valor = 0
+        for ele in columna5:
+            valor += int(ele.split(":")[1])
+        
+        if columna[0] not in registros:
+            registros[columna[0]] = valor
+        else:
+            registros[columna[0]] += valor
+
+    return dict(sorted(registros.items()))

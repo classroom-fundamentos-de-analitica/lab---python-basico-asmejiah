@@ -22,7 +22,6 @@ def pregunta_01():
     214
 
     """
-    *Escribo mi código para solucionar el problema
      n=0
     for i in datos: 
         i+=int(i[1])

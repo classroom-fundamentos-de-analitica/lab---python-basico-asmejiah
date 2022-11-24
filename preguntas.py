@@ -22,10 +22,10 @@ def pregunta_01():
     214
 
     """
-    ite = 0
-    for fila in datos: 
-        ite += int(fila[1])
-    return ite
+    n = 0
+    for columna in datos: 
+        n += int(columna[1])
+    return n
 
 def pregunta_02():
     """

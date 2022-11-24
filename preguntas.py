@@ -73,7 +73,7 @@ def pregunta_03():
         if columna[0] not in registros: 
             registros[columna[0]] = int(columna[1])
         else: 
-            regitros[columna[0]] += int(columna[1])
+            registros[columna[0]] += int(columna[1])
 
     lista = sorted(registros.items(), key=lambda x: x[0])
     return lista
@@ -130,7 +130,7 @@ def pregunta_05():
     """
     registros = {}
     lista = []
-    for columna in lista:
+    for columna in datos:
         if columna[0] not in registros: 
             registros[columna[0]] = [int(columna[1])]
         else: 
@@ -237,7 +237,7 @@ def pregunta_08():
     """
     registros = {}
     for columna in datos:
-        if int(columnas[1]) not in registros:
+        if int(columna[1]) not in registros:
             registros[int(columna[1])] = [columna[0]]
         else:
             if columna[0] not in registros[int(columna[1])]: 
